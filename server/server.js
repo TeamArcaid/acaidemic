@@ -1,9 +1,5 @@
 import config from './../config/config'
 import app from './express'
-import mongoose from 'mongoose'
-
-/* Connetion URL */
-mongoose.Promise = global.Promise
 
 
 app.listen(config.port, (err)=>{
