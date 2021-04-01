@@ -9,6 +9,7 @@ import Template from './../template'
 import userRoutes from './routes/user.routes'
 
 
+
 /* modules for server side rendering */
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
@@ -16,6 +17,8 @@ import ReactDOMServer from 'react-dom/server'
 /* comment out before building for production */
 import devBundle from './devBundle'
 
+/* ensures Express server properly handles requests to static files 
+such as CSS files, images or bundled client-side JS */
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
