@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import monsteraImg from './../assets/images/monstera2.svg'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     }
   })) 
 
-  export default function Landing(){
+  export default function Home(){
     const classes = useStyles()
       return (
        <Card className={classes.card}>
@@ -28,10 +29,10 @@ const useStyles = makeStyles(theme => ({
             Home Page
           </Typography>
           <CardMedia className={classes.media} 
-                     image={unicornbikeImg} title="Unicorn Bicycle"/>
+                     image={monsteraImg} title="Monstera"/>
           <CardContent>
             <Typography variant="body2" component="p">
-              Welcome to the MERN Skeleton home page.
+              Arcaid Home
             </Typography>
           </CardContent>
         </Card>
