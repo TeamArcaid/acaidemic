@@ -20,6 +20,15 @@
     "semi": false,
     "tabWidth": 2
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": "eslint --fix",
+    "*.+(json|css|md)": "prettier --write"
+  },
   "engines": {
     "node": "15.12.0",
     "npm": "7.6.3"
@@ -53,6 +62,8 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.23.1",
     "file-loader": "^6.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "webpack": "^5.28.0",
