@@ -8,7 +8,33 @@
   "scripts": {
     "development": "nodemon",
     "build": "webpack --config webpack.config.client.production.js && webpack --mode=production --config webpack.config.server.js",
-    "start": "NODE_ENV=production node ./dist/server.generated.js"
+    "start": "NODE_ENV=production node ./dist/server.generated.js",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
+    "test": "jest"
+  },
+  "prettier": {
+    "printWidth": 110,
+    "bracketSpacing": true,
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "semi": true,
+    "tabWidth": 2,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": "eslint --fix",
+    "*.+(json|css|md)": "prettier --write"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ]
   },
   "engines": {
     "node": "15.12.0",
@@ -22,8 +48,11 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
+    "jest": "^26.6.3",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "react": "^17.0.2",
@@ -38,8 +67,15 @@
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.1",
     "file-loader": "^6.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
     "webpack": "^5.28.0",
     "webpack-cli": "^4.6.0",
     "webpack-dev-middleware": "^4.1.0",
