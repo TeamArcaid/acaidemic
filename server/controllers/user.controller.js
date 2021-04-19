@@ -1,27 +1,26 @@
-import { response } from 'express'
-import { database } from '../db.config'
-const User = require('../models/user').User;
+import db from '../models'
+const Op = db.Sequelize.Op
+import User from '../models/user'
 
-const createUser = async (req, res) => {
-    User.create(
-        {
-            first_name:'Sojung', 
-            last_name: 'Choi'
-        }
-    )
-    .then (function(users){
-        response.json(users);
-    })
-}
+const create = (req, res)=> {
+    const user = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+    }
 
-const getUsers = async (req, res) => {
-    User.findAll()
-    .then(function(users){
-        response.json(users)
-    })
+    User.create(user)
+        .then(data => {
+            res.send(data)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || 'Some error'
+            })
+        })
 }
 
 export default {
-    createUser,
-    getUsers
+    create
 }

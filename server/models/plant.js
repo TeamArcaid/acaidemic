@@ -1,6 +1,4 @@
-import Sequelize from 'sequelize'
-
-const createPlant = (sequalize) => {
+const createPlant = (sequalize, Sequelize) => {
     const Plant = sequalize.define("plant", {
         species: {
         type: Sequelize.STRING

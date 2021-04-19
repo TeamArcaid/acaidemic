@@ -1,17 +1,10 @@
-import Sequelize from 'sequelize'
-import plant from './models/plant'
+const dbConfig = {
+    HOST: "localhost",
+    USER: "postgres",
+    PASSWORD: "acaidemic",
+    DB: "arcaid",
+    dialect: "postgres"
+}
 
-const sequelize = new Sequelize('arcaid', 'postgres', 'acaidemic', {
-    host: 'localhost',
-    dialect: 'postgres'
-})
+export default dbConfig
 
-const db = {};
-
-db.Sequelize = Sequelize
-db.sequelize = sequelize
-
-
-db.plants = plant(sequelize, Sequelize)
-
-export default db

@@ -1,1 +1,11 @@
-var database = require('../db.config').database
+const createQuestion = (sequalize, Sequelize) => {
+    const Question = sequalize.define("question", {
+        questionText: {
+        type: Sequelize.STRING
+        }
+    });
+
+    return Question;
+}
+
+export default createQuestion
