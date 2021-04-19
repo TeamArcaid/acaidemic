@@ -1,6 +1,5 @@
 import db from '../models'
 const Op = db.Sequelize.Op
-import User from '../models/user'
 
 const create = (req, res)=> {
     const user = {
@@ -9,7 +8,7 @@ const create = (req, res)=> {
         email: req.body.email
     }
 
-    User.create(user)
+    db.user.create(user)
         .then(data => {
             res.send(data)
         })

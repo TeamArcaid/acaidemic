@@ -7,6 +7,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import Template from './../template'
 import userRoutes from './routes/user.routes'
+import plantRoutes from './routes/plant.routes'
 
 
 /* modules for server side rendering */
@@ -47,6 +48,7 @@ app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
 /* mount routes */
 app.use('/', userRoutes)
+app.use('/', plantRoutes)
 
 app.get('*', (req, res) => {
     const sheets = new ServerStyleSheets()
