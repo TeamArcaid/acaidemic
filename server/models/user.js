@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize'
+import { useRadioGroup } from "@material-ui/core";
 
-const createUser = (sequalize) => {
+const createUser = (sequalize, Sequelize) => {
     const User = sequalize.define("user", {
         firstName: {
         type: Sequelize.STRING

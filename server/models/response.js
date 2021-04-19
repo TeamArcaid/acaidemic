@@ -1,6 +1,4 @@
-import Sequelize from 'sequelize'
-
-const createResponse = (sequalize) => {
+const createResponse = (sequalize, Sequelize) => {
     const Response = sequalize.define("response", {
         response: {
         type: Sequelize.STRING
