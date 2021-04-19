@@ -1,4 +1,4 @@
-import { useRadioGroup } from "@material-ui/core";
+import db from './index'
 
 const createUser = (sequalize, Sequelize) => {
     const User = sequalize.define("user", {

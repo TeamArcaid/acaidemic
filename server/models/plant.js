@@ -7,7 +7,7 @@ const createPlant = (sequalize, Sequelize) => {
         type: Sequelize.INTEGER
         },
         problem: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         startMood: {
             type: Sequelize.INTEGER
