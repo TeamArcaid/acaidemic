@@ -1,5 +1,5 @@
 import { response } from 'express'
-import { database } from '../../config/db.config'
+import { database } from '../db.config'
 const User = require('../models/user').User;
 
 const createUser = async (req, res) => {

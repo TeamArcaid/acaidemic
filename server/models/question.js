@@ -1,1 +1,1 @@
-var database = require('../../config/db.config').database
+var database = require('../db.config').database
