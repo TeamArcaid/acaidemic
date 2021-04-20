@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Home from './core/Home'
+import Menu from './core/Menu'
+import Garden from './core/Garden'
 /*import Users from './user/Users'
 import Signup from './user/Signup'
 import Signin from './auth/Signin' 
@@ -11,14 +13,15 @@ import Menu from './core/Menu' */
 
 
 const MainRouter = () => {
-    return (<div>
-      
+  return (
+    <div>
       <Switch>
-          <Route exact path="/" component = {Home}/>
-
+        <Route exact path="/" component={Home} />
+        <Route exact path="/menu" component={Menu} />
+        <Route exact path="/garden" component={Garden} />
       </Switch>
     </div>
-    )
+  )
 }
 
 export default MainRouter
