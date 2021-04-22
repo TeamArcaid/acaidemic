@@ -44,7 +44,7 @@ export default function garden() {
             component={Link}
             to="/"
           >
-            Plant
+            Small Cacti
           </Button>
           <Button
             size="large"
@@ -52,7 +52,7 @@ export default function garden() {
             component={Link}
             to="/"
           >
-            Plant
+            Chinese Money Plant
           </Button>
           <Button
             size="large"
@@ -60,7 +60,7 @@ export default function garden() {
             component={Link}
             to="/"
           >
-            Plant
+            Jade Plant
           </Button>
           <Button
             size="large"
@@ -68,7 +68,7 @@ export default function garden() {
             component={Link}
             to="/"
           >
-            Plant
+            Rubber Tree
           </Button>
           <Button
             size="large"
@@ -76,7 +76,7 @@ export default function garden() {
             component={Link}
             to="/"
           >
-            Plant
+            Date Palm
           </Button>
         </ButtonGroup>
       </CardActions>
