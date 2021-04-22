@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, CardActions } from '@material-ui/core';
+import { Button, CardActions, ButtonGroup } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -33,12 +33,27 @@ export default function garden() {
         <Typography variant="h6">Pick a plant!</Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" component={Link} to="/">
-          Plant
-        </Button>
-        <Button variant="contained" component={Link} to="/garden">
-          Plant
-        </Button>
+        <ButtonGroup
+          orientation="vertical"
+          color="primary"
+          aria-label="vertical outlined primary button group"
+        >
+          <Button size="large" component={Link} to="/">
+            Plant
+          </Button>
+          <Button size="large" component={Link} to="/">
+            Plant
+          </Button>
+          <Button size="large" component={Link} to="/">
+            Plant
+          </Button>
+          <Button size="large" component={Link} to="/">
+            Plant
+          </Button>
+          <Button size="large" component={Link} to="/">
+            Plant
+          </Button>
+        </ButtonGroup>
       </CardActions>
     </Card>
   );
