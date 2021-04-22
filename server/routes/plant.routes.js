@@ -5,7 +5,14 @@ const router = express.Router()
 
 
 router.route('/api/v1/plants')
-    .post(plantCtrl.create)
+    .get(plantCtrl.readAll)
+    .post(plantCtrl.createOne)
+    .delete(plantCtrl.deleteAll)
+
+router.route('/api/v1/plants/:id')
+    .get(plantCtrl.readOne)
+    .put(plantCtrl.updateOne)
+    .delete(plantCtrl.deleteOne)
 
 
 export default router
