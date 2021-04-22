@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, CardActions, ButtonGroup } from '@material-ui/core';
+import { Button, CardActions, ButtonGroup, SvgIcon, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -21,6 +21,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const icon1 = (props) => {
+  return (
+    <SvgIcon
+      {...props}
+      width="168"
+      height="263"
+      viewBox="0 0 168 263"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="./../assets/images/monstera2.svg" />
+    </SvgIcon>
+  );
+};
+
 export default function garden() {
   const classes = useStyles();
 
@@ -38,19 +53,44 @@ export default function garden() {
           color="primary"
           aria-label="vertical outlined primary button group"
         >
-          <Button size="large" component={Link} to="/">
+          <Button
+            size="large"
+            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            component={Link}
+            to="/"
+          >
             Plant
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button
+            size="large"
+            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            component={Link}
+            to="/"
+          >
             Plant
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button
+            size="large"
+            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            component={Link}
+            to="/"
+          >
             Plant
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button
+            size="large"
+            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            component={Link}
+            to="/"
+          >
             Plant
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button
+            size="large"
+            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            component={Link}
+            to="/"
+          >
             Plant
           </Button>
         </ButtonGroup>
