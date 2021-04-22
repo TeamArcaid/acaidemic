@@ -21,21 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const icon1 = (props) => {
-  return (
-    <SvgIcon
-      {...props}
-      width="168"
-      height="263"
-      viewBox="0 0 168 263"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="./../assets/images/monstera2.svg" />
-    </SvgIcon>
-  );
-};
-
 export default function garden() {
   const classes = useStyles();
 
