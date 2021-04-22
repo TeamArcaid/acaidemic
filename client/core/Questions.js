@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function garden() {
+export default function questions() {
   const classes = useStyles();
 
   return (
