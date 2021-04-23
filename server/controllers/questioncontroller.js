@@ -26,6 +26,29 @@ const createAll = (req, res)=> {
     })
 }
 
+const createPlantQuestion = (req, res)=> {
+    const plant_question = {
+        question_id: req.body.question_id,
+        plant_id: req.body.plant_id
+    }
+
+    db.plant_question.create(plant_question)
+        .then(data=> {
+            res.send(data)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || 'Some error'
+            })
+        })
+
+    
+}
+
+
+
 export default {
-    createAll
+    createAll,
+    createPlantQuestion
 }

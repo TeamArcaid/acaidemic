@@ -1,4 +1,3 @@
-import { request } from 'express'
 import db from '../models'
 const Op = db.Sequelize.Op
 
