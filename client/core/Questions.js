@@ -54,7 +54,7 @@ export default function questions() {
             What can I do to succeed?
           </Button>
         </ButtonGroup>
-        <Button variant="contained" component={Link} to="/menu">
+        <Button variant="contained" component={Link} to="/">
           Exit
         </Button>
       </CardActions>
