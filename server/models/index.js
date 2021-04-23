@@ -21,10 +21,9 @@ db.plant = plant(sequelize, Sequelize)
 db.question = question(sequelize, Sequelize)
 db.response = response(sequelize, Sequelize)
 
-db.plant.belongsTo(db.user, {
-    foreignKey: "user_id",
-    as: "user",
-})
+db.plant.belongsTo(db.user)
+
+db.user.hasMany(db.plant)
 
 db.plant.belongsToMany(db.question, {
     through: "plant_question",

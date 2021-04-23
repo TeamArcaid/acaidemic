@@ -16,6 +16,7 @@ const createPlant = (sequalize, Sequelize) => {
             type: Sequelize.INTEGER
         }
     });
+   
 
     return Plant;
 }
