@@ -26,29 +26,82 @@ const createAll = (req, res)=> {
     })
 }
 
-const createPlantQuestion = (req, res)=> {
-    const plant_question = {
-        question_id: req.body.question_id,
-        plant_id: req.body.plant_id
-    }
+const addQuestion = (req, res)=> {
 
-    db.plant_question.create(plant_question)
-        .then(data=> {
-            res.send(data)
+    return db.plant.findByPk(req.params.plant_id).then((plant)=> {
+        if(!plant){
+            console.log('Plant not found')
+            return null
+        }
+
+        return db.question.findByPk(req.params.question_id).then((question)=> {
+            if(!question){
+                console.log('Question not found')
+                return null
+            }
+
+            plant.addQuestion(question)
+            console.log("Successfully added question")
+            res.json(plant)
         })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || 'Some error'
+    })
+    .catch((err)=> {
+        console.log(">> Error while adding Question to Plant: ", err)
+    })
+}
+
+const addResponse = (req, res)=> {
+    
+
+        return db.plant.findByPk(req.params.plant_id).then((plant)=> {
+            if(!plant){
+                console.log('Plant not found')
+                return null
+            }
+            return db.question.findByPk(req.params.question_id).then((question)=> {
+                if(!question){
+                    console.log('Question not found')
+                    return null
+                }
+                const response = {
+                    response: req.body.response, 
+                    userId: "1",
+                    plantId:plant.id,
+                    questionId: question.id
+                }
+
+                db.response.create(response)
+                .then(data => {
+                    res.send(data)
+                })
+                .catch(err => {
+                    res.status(500).send({
+                        message:
+                            err.message || 'Some error'
+                    })
+                })                
             })
         })
 
-    
+        .catch((err)=> {
+            console.log(">> Error while adding Response: ", err)
+        })
+}
+
+const readResponse = (req, res)=> {
+    return db.response.findByPk(req.params.response_id, {include: ["question"]})
+    .then((response)=> {
+        return response
+    })
+    .catch((err)=> {
+        console.log("Error while finding response: ", err)
+    })
 }
 
 
 
 export default {
     createAll,
-    createPlantQuestion
+    addQuestion,
+    addResponse
 }
