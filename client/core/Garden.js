@@ -42,7 +42,7 @@ export default function garden() {
             size="large"
             startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
             component={Link}
-            to="/"
+            to="/questions"
           >
             Small Cacti
           </Button>
@@ -50,7 +50,7 @@ export default function garden() {
             size="large"
             startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
             component={Link}
-            to="/"
+            to="/questions"
           >
             Chinese Money Plant
           </Button>
@@ -58,7 +58,7 @@ export default function garden() {
             size="large"
             startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
             component={Link}
-            to="/"
+            to="/questions"
           >
             Jade Plant
           </Button>
@@ -66,7 +66,7 @@ export default function garden() {
             size="large"
             startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
             component={Link}
-            to="/"
+            to="/questions"
           >
             Rubber Tree
           </Button>
@@ -74,7 +74,7 @@ export default function garden() {
             size="large"
             startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
             component={Link}
-            to="/"
+            to="/questions"
           >
             Date Palm
           </Button>
