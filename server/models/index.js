@@ -38,19 +38,22 @@ db.question.belongsToMany(db.plant, {
 })
 
 db.response.belongsTo(db.question, {
-    foreignKey: 'question_id',
-    as: "question_responses"
+    as: "question"
 })
+
+db.question.hasMany(db.response, { as: "responses" })
 
 db.response.belongsTo(db.plant, {
-    foreignKey: 'plant_id',
-    as: "plant_responses"  
+    as: "plant"  
 })
 
+db.plant.hasMany(db.response, { as: "responses" })
+
 db.response.belongsTo(db.user, {
-    foreignKey: "user_id",
-    as: "user_responses"
+    as: "user"
 })
+
+db.user.hasMany(db.response, { as: "responses" })
 
 
 export default db
