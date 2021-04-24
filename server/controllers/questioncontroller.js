@@ -88,6 +88,17 @@ const addResponse = (req, res)=> {
         })
 }
 
+const readResponse = (req, res)=> {
+    return db.response.findByPk(req.params.response_id, {include: ["question"]})
+    .then((response)=> {
+        return response
+    })
+    .catch((err)=> {
+        console.log("Error while finding response: ", err)
+    })
+}
+
+
 
 export default {
     createAll,
