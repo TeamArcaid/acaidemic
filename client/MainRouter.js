@@ -4,6 +4,7 @@ import Home from './core/Home'
 import Menu from './core/Menu'
 import Garden from './core/Garden'
 import Questions from './core/Questions'
+import Answer from './core/Answer'
 /*import Users from './user/Users'
 import Signup from './user/Signup'
 import Signin from './auth/Signin' 
@@ -21,6 +22,7 @@ const MainRouter = () => {
         <Route exact path="/menu" component={Menu} />
         <Route exact path="/garden" component={Garden} />
         <Route exact path="/questions" component={Questions} />
+        <Route exact path="/answer" component={Answer} />
       </Switch>
     </div>
   )
