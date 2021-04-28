@@ -4,8 +4,6 @@ import Home from './core/Home'
 import Menu from './core/Menu'
 import Garden from './core/Garden'
 import Questions from './core/Questions'
-<<<<<<< HEAD
-=======
 import Answer from './core/Answer'
 /*import Users from './user/Users'
 import Signup from './user/Signup'
@@ -14,7 +12,6 @@ import EditProfile from './user/EditProfile'
 import Profile from './user/Profile'
 import PrivateRoute from './auth/PrivateRoute'
 import Menu from './core/Menu' */
->>>>>>> master
 
 
 const MainRouter = () => {
