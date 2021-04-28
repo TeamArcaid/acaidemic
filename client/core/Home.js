@@ -38,7 +38,7 @@ export default function Home() {
       </CardContent>
       <CardActions>
         <Button variant="contained" component={Link} to="/menu">
-          Next
+          New Plant
         </Button>
       </CardActions>
     </Card>

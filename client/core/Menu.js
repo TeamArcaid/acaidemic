@@ -5,6 +5,8 @@ import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "react-router-dom"
+import {create} from '../plant/api-plant.js'
+
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -25,6 +27,28 @@ export default function menu() {
   const classes = useStyles()
   const [feeling, setFeeling] = useState(50)
 
+  const [values, setValues]=useState({
+    problem: '',
+    error: ''
+  })
+
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value})
+  }
+
+  const clickSubmit=()=> {
+    const plant = {
+      problem: values.problem || undefined
+    }
+    create(plant).then((data)=> {
+      if(data.error){
+        setValues({ ...values, error: data.error})
+      } else {
+        setValues({ ...values, error:''})
+      }
+    })
+  }
+
   const handleFeelingChange = (event, newValue) => {
     setFeeling(newValue)
   }
@@ -32,29 +56,30 @@ export default function menu() {
   return (
     <Card className={classes.card}>
       <Typography variant="h3" className={classes.title}>
-        Sage
+        Questions
       </Typography>
       <CardContent>
         <Typography id="client-name">What is your name?</Typography>
         <form className={classes.name} autoComplete="off" name="name">
           <TextField id="outlined-basic" variant="outlined" />
         </form>
-        <Typography id="client-feeling">How are you feeling?</Typography>
+        <Typography id="client-feeling">How are you feeling now?</Typography>
         <Slider value={feeling} onChange={handleFeelingChange} aria-labelledby="client-feeling" />
-        <Typography id="client-mind">What is on your mind?</Typography>
+        <Typography id="client-mind">In a few words, what's on your mind?</Typography>
         <TextField
           id="client-mind-text"
           aria-labelledby="client-feeling"
           multiline
           rows={4}
           variant="outlined"
+          value={values.problem} onChange={handleChange('problem')}
         />
       </CardContent>
       <CardActions>
         <Button variant="contained" component={Link} to="/">
           Back
         </Button>
-        <Button variant="contained" component={Link} to="/garden">
+        <Button variant="contained" onClick={clickSubmit} component={Link} to="/garden">
           Next
         </Button>
       </CardActions>
