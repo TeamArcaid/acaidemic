@@ -3,6 +3,7 @@ const Op = db.Sequelize.Op
 
 
 const createOne = (req, res)=> {
+    console.log('create plant api called')
     const plant = {
         species: req.body.species,
         stage: req.body.stage,
@@ -38,6 +39,7 @@ const readOne = (req, res)=> {
 }
 
 const readAll = (req, res)=> {
+    console.log('list plants api called')
     db.plant.findAll()
     .then(plants=> {
         res.json(plants)

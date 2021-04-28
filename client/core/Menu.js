@@ -37,6 +37,7 @@ export default function menu() {
   }
 
   const clickSubmit=()=> {
+    console.log('clickSubmit function called')
     const plant = {
       problem: values.problem || undefined
     }

@@ -1,4 +1,5 @@
 export const create = async(plant)=> {
+    console.log('Called create api-plant')
     try {
         let response = await fetch('/api/v1/plants/', {
             method:'POST',
