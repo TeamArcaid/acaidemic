@@ -37,14 +37,10 @@ export default function menu() {
       <CardContent>
         <Typography id="client-name">What is your name?</Typography>
         <form className={classes.name} autoComplete="off" name="name">
-          <TextField id="outlined-basic" label="Enter Name" variant="outlined" />
+          <TextField id="outlined-basic" variant="outlined" />
         </form>
         <Typography id="client-feeling">How are you feeling?</Typography>
-        <Slider
-          value={feeling}
-          onChange={handleFeelingChange}
-          aria-labelledby="client-feeling"
-        />
+        <Slider value={feeling} onChange={handleFeelingChange} aria-labelledby="client-feeling" />
         <Typography id="client-mind">What is on your mind?</Typography>
         <TextField
           id="client-mind-text"
