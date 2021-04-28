@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "react-router-dom"
-import monsteraImg from "./../assets/images/monstera2.svg"
+import landing from "../assets/images/Backgrounds/01 Artwork.svg"
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -28,12 +28,12 @@ export default function Home() {
   return (
     <Card className={classes.card}>
       <Typography variant="h6" className={classes.title}>
-        Home Page
+        SAGE 
       </Typography>
-      <CardMedia className={classes.media} image={monsteraImg} title="Monstera" />
+      <CardMedia className={classes.media} image={landing} title="splash garden" />
       <CardContent>
         <Typography variant="body2" component="p">
-          Arcaid Home
+    
         </Typography>
       </CardContent>
       <CardActions>
