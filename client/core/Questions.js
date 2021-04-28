@@ -38,19 +38,19 @@ export default function questions() {
           color="primary"
           aria-label="vertical outlined primary button group"
         >
-          <Button size="large" component={Link} to="/">
+          <Button size="large" component={Link} to="/answer">
             How is this affecting me?
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button size="large" component={Link} to="/answer">
             What is within my control and what is not?
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button size="large" component={Link} to="/answer">
             What will bring me comfort right now?
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button size="large" component={Link} to="/answer">
             If there's someone involved, can they be talked with?
           </Button>
-          <Button size="large" component={Link} to="/">
+          <Button size="large" component={Link} to="/answer">
             What can I do to succeed?
           </Button>
         </ButtonGroup>
