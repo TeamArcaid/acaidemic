@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 600,
     margin: "auto",
     marginTop: theme.spacing(5),
+    backgroundColor: '#A8D9C4',
   },
   title: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(

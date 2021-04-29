@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 600,
     margin: "auto",
     marginTop: theme.spacing(5),
+    backgroundColor: '#A8D9C4',
   },
   title: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(
@@ -20,6 +21,14 @@ const useStyles = makeStyles((theme) => ({
   },
   name: {
     margin: "auto",
+  },
+  button: {
+    backgroundColor: '#FF8576',
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  text: {
+    backgroundColor: `${theme.palette.common.white}`,
   },
 }));
 
@@ -39,6 +48,7 @@ export default function answer(props) {
       <CardContent>
         <Typography id="answer">{props.question}</Typography>
         <TextField
+          className={classes.text}
           id="client-mind-text"
           aria-labelledby="client-feeling"
           multiline
@@ -48,11 +58,11 @@ export default function answer(props) {
         />
       </CardContent>
       <CardActions>
-        <Button variant="contained" component={Link} href="/questions">
+        <Button className={classes.button} variant="contained" component={Link} href="/questions">
           Back
         </Button>
-        <Button variant="contained" component={Link} href="/questions">
-          Next
+        <Button className={classes.button} variant="contained" component={Link} href="/questions">
+          Submit
         </Button>
       </CardActions>
     </Card>

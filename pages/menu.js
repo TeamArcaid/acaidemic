@@ -12,15 +12,24 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 600,
     margin: "auto",
     marginTop: theme.spacing(5),
+    backgroundColor: '#A8D9C4',
   },
   title: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(
       2
     )}px`,
-    color: theme.palette.openTitle,
+    color: '#0C2722',
   },
   name: {
     margin: "auto",
+  },
+  button: {
+    backgroundColor: '#FF8576',
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  text: {
+    backgroundColor: `${theme.palette.common.white}`,
   },
 }));
 
@@ -62,8 +71,8 @@ export default function menu() {
       </Typography>
       <CardContent>
         <Typography id="client-name">What is your name?</Typography>
-        <form className={classes.name} autoComplete="off" name="name">
-          <TextField id="outlined-basic" variant="outlined" />
+        <form fullWidth className={classes.name} autoComplete="off" name="name">
+          <TextField className={classes.text} id="outlined-basic" variant="outlined" />
         </form>
         <Typography id="client-feeling">How are you feeling now?</Typography>
         <Slider
@@ -74,7 +83,9 @@ export default function menu() {
         <Typography id="client-mind">
           In a few words, what's on your mind?
         </Typography>
+        
         <TextField
+          className={classes.text}
           id="client-mind-text"
           aria-labelledby="client-feeling"
           multiline
@@ -85,10 +96,11 @@ export default function menu() {
         />
       </CardContent>
       <CardActions>
-        <Button variant="contained" component={Link} href="/">
+        <Button className={classes.button} variant="contained" component={Link} href="/">
           Back
         </Button>
         <Button
+          className={classes.button}
           variant="contained"
           onClick={clickSubmit}
           component={Link}

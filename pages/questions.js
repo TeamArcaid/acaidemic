@@ -11,6 +11,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 600,
     margin: "auto",
     marginTop: theme.spacing(5),
+    backgroundColor: '#A8D9C4',
+
   },
   title: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(
@@ -20,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   name: {
     margin: "auto",
+  },
+  button: {
+    backgroundColor: '#FF8576',
+    color: 'white',
+    fontWeight: 'bold',
   },
 }));
 
@@ -58,7 +65,7 @@ export default function questions() {
             What can I do to succeed?
           </Button>
         </ButtonGroup>
-        <Button variant="contained" component={Link} href="/">
+        <Button className={classes.button} variant="contained" component={Link} href="/">
           Exit
         </Button>
       </CardActions>

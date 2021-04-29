@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 600,
     margin: "auto",
     marginTop: theme.spacing(5),
+    backgroundColor: '#A8D9C4',
   },
   title: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(
@@ -23,13 +24,18 @@ const useStyles = makeStyles((theme) => ({
   media: {
     minHeight: 400,
   },
+  button: {
+    backgroundColor: '#FF8576',
+    color: 'white',
+    fontWeight: 'bold',
+  },
 }));
 
 export default function Home() {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
-      <Typography variant="h6" className={classes.title}>
+      <Typography variant="h1" className={classes.title} align="center">
         SAGE
       </Typography>
       <CardMedia
@@ -41,7 +47,7 @@ export default function Home() {
         <Typography variant="body2" component="p"></Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" component={Link} href="/menu">
+        <Button className={classes.button} variant="contained" component={Link} href="/menu">
           New Plant
         </Button>
       </CardActions>
