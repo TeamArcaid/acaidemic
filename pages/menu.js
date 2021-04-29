@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, CardActions, TextField, Slider } from "@material-ui/core";
+import { Button, CardActions, TextField, Slider, FormControl, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Link from "../src/Link";
 import { create } from "../src/api/plant";
+import { SentimentSatisfiedAlt, SentimentVeryDissatisfied } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -31,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
   text: {
     backgroundColor: `${theme.palette.common.white}`,
   },
+  sentiment: {
+    color: '#F4EF9D',
+    height: 8,
+    borderRadius: 0,
+    opacity: 1
+  }
 }));
 
 export default function menu() {
@@ -71,29 +78,41 @@ export default function menu() {
       </Typography>
       <CardContent>
         <Typography id="client-name">What is your name?</Typography>
-        <form fullWidth className={classes.name} autoComplete="off" name="name">
+        <FormControl fullWidth className={classes.name} autoComplete="off" name="name">
           <TextField className={classes.text} id="outlined-basic" variant="outlined" />
-        </form>
+        </FormControl>
         <Typography id="client-feeling">How are you feeling now?</Typography>
+        <Grid container spacing={2}>
+        <Grid item>
+          <SentimentVeryDissatisfied />
+        </Grid>
+        <Grid item xs>
         <Slider
           value={feeling}
           onChange={handleFeelingChange}
           aria-labelledby="client-feeling"
+          className={classes.sentiment}
         />
+        </Grid>
+        <Grid item>
+          <SentimentSatisfiedAlt />
+        </Grid>
+      </Grid>
         <Typography id="client-mind">
           In a few words, what's on your mind?
         </Typography>
-        
-        <TextField
-          className={classes.text}
-          id="client-mind-text"
-          aria-labelledby="client-feeling"
-          multiline
-          rows={4}
-          variant="outlined"
-          value={values.problem}
-          onChange={handleChange("problem")}
-        />
+        <FormControl fullWidth >
+          <TextField
+            className={classes.text}
+            id="client-mind-text"
+            aria-labelledby="client-feeling"
+            multiline
+            rows={4}
+            variant="outlined"
+            value={values.problem}
+            onChange={handleChange("problem")}
+          />
+        </FormControl>
       </CardContent>
       <CardActions>
         <Button className={classes.button} variant="contained" component={Link} href="/">

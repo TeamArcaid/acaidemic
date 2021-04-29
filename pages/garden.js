@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   name: {
     margin: "auto",
   },
+  button: {
+    backgroundColor: `${theme.palette.common.white}`,
+    color: '#0C2722'
+  }
 }));
 
 export default function garden() {
@@ -33,49 +37,55 @@ export default function garden() {
         Sage
       </Typography>
       <CardContent>
-        <Typography variant="h6">Pick a plant!</Typography>
+        <Typography align="center" variant="h6">Pick a plant!</Typography>
       </CardContent>
       <CardActions>
         <ButtonGroup
           orientation="vertical"
           color="primary"
           aria-label="vertical outlined primary button group"
+          align="center"
         >
           <Button
+            className={classes.button}
             size="large"
-            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            startIcon={<Avatar src="/1_plant_edu.svg" />}
             component={Link}
             href="/questions"
           >
             Small Cacti
           </Button>
           <Button
+            className={classes.button}
             size="large"
-            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            startIcon={<Avatar src="/2_plant_edu.svg" />}
             component={Link}
             href="/questions"
           >
             Chinese Money Plant
           </Button>
           <Button
+            className={classes.button}
             size="large"
-            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            startIcon={<Avatar src="/3_altplants_edu.svg" />}
             component={Link}
             href="/questions"
           >
             Jade Plant
           </Button>
           <Button
+            className={classes.button}
             size="large"
-            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            startIcon={<Avatar src="/4_plant_edu.svg" />}
             component={Link}
             href="/questions"
           >
             Rubber Tree
           </Button>
           <Button
+            className={classes.button}
             size="large"
-            startIcon={<Avatar src="./../assets/images/monstera2.svg" />}
+            startIcon={<Avatar src="/5_plant_edu.svg" />}
             component={Link}
             href="/questions"
           >
