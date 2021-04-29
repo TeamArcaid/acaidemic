@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   name: {
     margin: 'auto',
   },
+  button: {
+    backgroundColor: '#FF8576',
+    color: 'white',
+    fontWeight: 'bold',
+  },
 }));
 
 export default function questions() {
@@ -54,7 +59,7 @@ export default function questions() {
             What can I do to succeed?
           </Button>
         </ButtonGroup>
-        <Button variant="contained" component={Link} to="/">
+        <Button className={classes.button} variant="contained" component={Link} to="/">
           Exit
         </Button>
       </CardActions>
