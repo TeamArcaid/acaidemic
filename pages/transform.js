@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Button, CardActions, TextField, Slider } from "@material-ui/core";
+import React from "react";
+import { Button, CardActions } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Link from "../src/Link";
+import landing from "../public/Backgrounds/01 Artwork.svg";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -19,51 +21,34 @@ const useStyles = makeStyles((theme) => ({
     )}px`,
     color: theme.palette.openTitle,
   },
-  name: {
-    margin: "auto",
+  media: {
+    minHeight: 400,
   },
   button: {
     backgroundColor: '#FF8576',
     color: 'white',
     fontWeight: 'bold',
   },
-  text: {
-    backgroundColor: `${theme.palette.common.white}`,
-  },
 }));
 
-export default function answer(props) {
+export default function Home() {
   const classes = useStyles();
-  const [answer, setAnswer] = useState();
-
-  const handleAnswerChange = (event, newValue) => {
-    setAnswer(newValue);
-  };
-
   return (
     <Card className={classes.card}>
-      <Typography variant="h3" className={classes.title}>
-        Sage
+      <Typography variant="h1" className={classes.title} align="center">
+        SAGE
       </Typography>
+      <CardMedia
+        className={classes.media}
+        image={"/1_plant_edu.svg"}
+        title="plant"
+      />
       <CardContent>
-        <Typography id="answer" variant="h6">How is this affecting me?</Typography>
-        <TextField
-          className={classes.text}
-          id="client-mind-text"
-          aria-labelledby="client-feeling"
-          multiline
-          fullWidth
-          rows={10}
-          variant="outlined"
-          onChange={handleAnswerChange}
-        />
+        <Typography variant="body2" component="p"></Typography>
       </CardContent>
       <CardActions>
         <Button className={classes.button} variant="contained" component={Link} href="/questions">
-          Back
-        </Button>
-        <Button className={classes.button} variant="contained" component={Link} href="/transform">
-          Submit
+          Next Question
         </Button>
       </CardActions>
     </Card>
