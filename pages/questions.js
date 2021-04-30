@@ -28,6 +28,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontWeight: 'bold',
   },
+  question: {
+    backgroundColor: `${theme.palette.common.white}`,
+    color: '#0C2722',
+    '&:hover': {
+      color: `${theme.palette.common.white}`,
+      backgroundColor: '#3D7046',
+    },
+  },
 }));
 
 export default function questions() {
@@ -40,7 +48,7 @@ export default function questions() {
       </Typography>
       <CardContent>
         <Typography variant="h6">
-          To begin, choose one question you would like to answer
+          Choose one question you would like to answer
         </Typography>
       </CardContent>
       <CardActions>
@@ -49,19 +57,19 @@ export default function questions() {
           color="primary"
           aria-label="vertical outlined primary button group"
         >
-          <Button size="large" component={Link} href="/answer">
+          <Button className={classes.question} size="large" component={Link} href="/answer">
             How is this affecting me?
           </Button>
-          <Button size="large" component={Link} href="/answer">
+          <Button className={classes.question} size="large" component={Link} href="/answer">
             What is within my control and what is not?
           </Button>
-          <Button size="large" component={Link} href="/answer">
+          <Button className={classes.question} size="large" component={Link} href="/answer">
             What will bring me comfort right now?
           </Button>
-          <Button size="large" component={Link} href="/answer">
+          <Button className={classes.question} size="large" component={Link} href="/answer">
             If there's someone involved, can they be talked with?
           </Button>
-          <Button size="large" component={Link} href="/answer">
+          <Button className={classes.question} size="large" component={Link} href="/answer">
             What can I do to succeed?
           </Button>
         </ButtonGroup>
