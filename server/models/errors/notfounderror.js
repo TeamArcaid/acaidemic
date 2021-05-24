@@ -1,9 +1,11 @@
 import { ApiError } from './apierror';
 
-export class NotFoundError extends ApiError {
-  constructor(status_code, message) {
+const NOT_FOUND_STATUS_CODE = 404;
+
+export class NotFoundApiError extends ApiError {
+  constructor(message) {
     super(message);
     this.name = 'NotFoundError';
-    this.status_code = status_code;
+    this.status_code = NOT_FOUND_STATUS_CODE;
   }
 }
