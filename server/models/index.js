@@ -1,59 +1,69 @@
-import dbConfig from '../db.config'
+import dbConfig from '../db.config';
+import Sequelize from 'sequelize';
+import user from './user';
+import plant from './plant';
+import question from './question';
+import response from './response';
 
-import Sequelize from 'sequelize'
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const initializeDatabaseSafe = () => {
+  try {
+    return initializeDatabase();
+  } catch (err) {
+    console.log('Initialize db error', err);
+  }
+};
+
+const initializeDatabase = () => {
+  const sequelize = new Sequelize.Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
-    dialect: dbConfig.dialect
-})
+    port: dbConfig.PORT,
+    dialect: dbConfig.dialect,
+  });
 
-const db = {};
+  const db = {};
 
-db.Sequelize = Sequelize
-db.sequelize = sequelize
+  db.Sequelize = Sequelize;
+  db.sequelize = sequelize;
 
-import user from './user'
-import plant from './plant'
-import question from './question'
-import response from './response'
+  db.user = user(sequelize, Sequelize);
+  db.plant = plant(sequelize, Sequelize);
+  db.question = question(sequelize, Sequelize);
+  db.response = response(sequelize, Sequelize);
 
-db.user = user(sequelize, Sequelize)
-db.plant = plant(sequelize, Sequelize)
-db.question = question(sequelize, Sequelize)
-db.response = response(sequelize, Sequelize)
+  db.plant.belongsTo(db.user);
 
-db.plant.belongsTo(db.user)
+  db.user.hasMany(db.plant);
 
-db.user.hasMany(db.plant)
+  db.plant.belongsToMany(db.question, {
+    through: 'plant_question',
+    as: 'questions',
+    foreignKey: 'plant_id',
+  });
 
-db.plant.belongsToMany(db.question, {
-    through: "plant_question",
-    as: "questions",
-    foreignKey: "plant_id",
-})
+  db.question.belongsToMany(db.plant, {
+    through: 'plant_question',
+    as: 'questions',
+    foreignKey: 'question_id',
+  });
 
-db.question.belongsToMany(db.plant, {
-    through: "plant_question",
-    as:"questions",
-    foreignKey: "question_id",
-})
+  db.response.belongsTo(db.question, {
+    as: 'question',
+  });
 
-db.response.belongsTo(db.question, {
-    as: "question"
-})
+  db.question.hasMany(db.response, { as: 'responses' });
 
-db.question.hasMany(db.response, { as: "responses" })
+  db.response.belongsTo(db.plant, {
+    as: 'plant',
+  });
 
-db.response.belongsTo(db.plant, {
-    as: "plant"  
-})
+  db.plant.hasMany(db.response, { as: 'responses' });
 
-db.plant.hasMany(db.response, { as: "responses" })
+  db.response.belongsTo(db.user, {
+    as: 'user',
+  });
 
-db.response.belongsTo(db.user, {
-    as: "user"
-})
+  db.user.hasMany(db.response, { as: 'responses' });
+  return db;
+};
 
-db.user.hasMany(db.response, { as: "responses" })
-
-
-export default db
+export default initializeDatabaseSafe();
