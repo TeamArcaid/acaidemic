@@ -4,12 +4,13 @@ import user from './user';
 import plant from './plant';
 import question from './question';
 import response from './response';
+import { GlobalLogger } from '../services/logging';
 
 const initializeDatabaseSafe = () => {
   try {
     return initializeDatabase();
   } catch (err) {
-    console.log('Initialize db error', err);
+    GlobalLogger(`Error Initializing Database: ${err}`);
   }
 };
 

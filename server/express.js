@@ -15,13 +15,12 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import MainRouter from './../client/MainRouter';
 import { StaticRouter } from 'react-router-dom';
-
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
 import theme from './../client/theme';
 //end
 
 import db from './models';
-db.sequelize.sync();
+import { GlobalLogger } from './services/logging';
 
 /* comment out before building for production */
 import devBundle from './devBundle';
@@ -29,6 +28,9 @@ import devBundle from './devBundle';
 /* ensures Express server properly handles requests to static files
 such as CSS files, images or bundled client-side JS */
 const CURRENT_WORKING_DIR = process.cwd();
+
+db.sequelize.sync();
+
 const app = express();
 
 /* comment out before building for production */
@@ -81,7 +83,7 @@ app.use((err, req, res, next) => {
     res.status(401).json({ error: err.name + ': ' + err.message });
   } else if (err) {
     res.status(400).json({ error: err.name + ': ' + err.message });
-    console.log(err);
+    GlobalLogger.log(err)
   }
 });
 
