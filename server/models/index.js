@@ -6,14 +6,6 @@ import question from './question';
 import response from './response';
 import { GlobalLogger } from '../services/logging';
 
-const initializeDatabaseSafe = () => {
-  try {
-    return initializeDatabase();
-  } catch (err) {
-    GlobalLogger(`Error Initializing Database: ${err}`);
-  }
-};
-
 const initializeDatabase = () => {
   const sequelize = new Sequelize.Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
@@ -67,4 +59,15 @@ const initializeDatabase = () => {
   return db;
 };
 
-export default initializeDatabaseSafe();
+let db;
+
+(async () => {
+  try {
+    db = initializeDatabase();
+    await db.sequelize.sync();
+  } catch (err) {
+    GlobalLogger.log(`Error Initializing Database: ${err}`, { additionalInfo: err });
+  }
+})();
+
+export default db;

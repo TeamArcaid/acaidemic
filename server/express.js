@@ -19,7 +19,6 @@ import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
 import theme from './../client/theme';
 //end
 
-import db from './models';
 import { GlobalLogger } from './services/logging';
 
 /* comment out before building for production */
@@ -29,7 +28,6 @@ import devBundle from './devBundle';
 such as CSS files, images or bundled client-side JS */
 const CURRENT_WORKING_DIR = process.cwd();
 
-db.sequelize.sync();
 
 const app = express();
 
