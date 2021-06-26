@@ -2,7 +2,7 @@ const logBase = (msg) => {
   console.log(msg);
 };
 
-const initializeLogger = (options) => {
+const initializeLogger = ({ additionalInfo, ...options}}) => {
   return {
     log: logBase,
   };
