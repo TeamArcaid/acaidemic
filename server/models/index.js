@@ -65,8 +65,9 @@ let db;
   try {
     db = initializeDatabase();
     await db.sequelize.sync();
+    GlobalLogger.log('Initialized Database.');
   } catch (err) {
-    GlobalLogger.log(`Error Initializing Database: ${err}`, { additionalInfo: err });
+    GlobalLogger.error(`Initializing Database.`, { error: err });
   }
 })();
 
