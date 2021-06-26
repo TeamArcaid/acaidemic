@@ -1,11 +1,9 @@
-const logBase = (msg) => {
+const logBase = (msg, { additionalInfo }) => {
   console.log(msg);
 };
 
-const initializeLogger = ({ additionalInfo, ...options}}) => {
-  return {
-    log: logBase,
-  };
-};
+const initializeLogger = (options) => ({
+  log: logBase,
+});
 
-export const GlobalLogger = initializeLogger();
+export const GlobalLogger = initializeLogger({});
