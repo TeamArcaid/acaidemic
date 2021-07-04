@@ -23,52 +23,42 @@ const initializeDatabase = () => {
   db.question = question(sequelize, Sequelize);
   db.response = response(sequelize, Sequelize);
 
-  db.plant.belongsTo(db.user);
-
   db.user.hasMany(db.plant);
+  db.user.hasMany(db.response, { as: 'responses' });
 
+  db.plant.belongsTo(db.user);
   db.plant.belongsToMany(db.question, {
     through: 'plant_question',
     as: 'questions',
     foreignKey: 'plant_id',
   });
 
-  db.question.belongsToMany(db.plant, {
-    through: 'plant_question',
-    as: 'questions',
-    foreignKey: 'question_id',
-  });
-
-  db.response.belongsTo(db.question, {
-    as: 'question',
-  });
-
   db.question.hasMany(db.response, { as: 'responses' });
-
-  db.response.belongsTo(db.plant, {
-    as: 'plant',
-  });
-
-  db.plant.hasMany(db.response, { as: 'responses' });
 
   db.response.belongsTo(db.user, {
     as: 'user',
   });
+  db.response.belongsTo(db.question, {
+    as: 'question',
+  });
 
-  db.user.hasMany(db.response, { as: 'responses' });
   return db;
 };
 
 let db;
 
-(async () => {
+(async ({ env, ...options }) => {
   try {
+    const force = env === 'development';
+
     db = initializeDatabase();
-    await db.sequelize.sync();
+    await db.sequelize.sync({ force: force });
     GlobalLogger.log('Initialized Database.');
   } catch (err) {
     GlobalLogger.error(`Initializing Database.`, { error: err });
   }
-})();
+})({
+  env: process.env.NODE_ENV ?? 'production',
+});
 
 export default db;
