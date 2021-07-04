@@ -24,22 +24,22 @@ const initializeDatabase = () => {
   db.response = response(sequelize, Sequelize);
 
   db.user.hasMany(db.plant);
-  db.user.hasMany(db.response, { as: 'responses' });
 
   db.plant.belongsTo(db.user);
-  db.plant.belongsToMany(db.question, {
-    through: 'plant_question',
-    as: 'questions',
-    foreignKey: 'plant_id',
-  });
 
   db.question.hasMany(db.response, { as: 'responses' });
 
-  db.response.belongsTo(db.user, {
-    as: 'user',
-  });
+  //Association Table : Question to Response
   db.response.belongsTo(db.question, {
     as: 'question',
+  });
+
+  //Association Table : User to Response
+  db.user.belongsToMany(db.response, {
+    through: 'user_response',
+  });
+  db.response.belongsToMany(db.user, {
+    through: 'user_response',
   });
 
   return db;
@@ -49,6 +49,7 @@ let db;
 
 (async ({ env, ...options }) => {
   try {
+    console.log('Environment', env);
     const force = env === 'development';
 
     db = initializeDatabase();
