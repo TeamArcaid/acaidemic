@@ -9,6 +9,7 @@ import Template from './../template';
 import userRoutes from './routes/user.routes';
 import plantRoutes from './routes/plant.routes';
 import questionRoutes from './routes/question.routes';
+import responseRoutes from './routes/response.route';
 
 /* modules for server side rendering */
 import React from 'react';
@@ -50,6 +51,7 @@ app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')));
 app.use('/', userRoutes);
 app.use('/', plantRoutes);
 app.use('/', questionRoutes);
+app.use('/', responseRoutes);
 
 app.get('*', (req, res) => {
   const sheets = new ServerStyleSheets();
@@ -81,7 +83,7 @@ app.use((err, req, res, next) => {
     res.status(401).json({ error: err.name + ': ' + err.message });
   } else if (err) {
     res.status(400).json({ error: err.name + ': ' + err.message });
-    GlobalLogger.log(err)
+    GlobalLogger.log(err);
   }
 });
 
