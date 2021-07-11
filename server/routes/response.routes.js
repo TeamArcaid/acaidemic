@@ -3,6 +3,6 @@ import responseCtlr from '../controllers/responsecontroller';
 
 const router = express.Router();
 
-router.route('/api/v1/response').put(responseCtlr.addQuestion);
+router.route('/api/v1/response').put(responseCtlr.addResponse);
 
 export default router;
