@@ -1,9 +1,8 @@
 import db from '../models';
-import { NotFoundApiError } from '../models/errors/notfounderror';
 import { GlobalLogger } from './logging';
 
 export const ResponseTypes = {
-  STRING: 1,
+  STRING: 'Text',
 };
 
 const addResponse = ({ question, user, response_content }) =>
