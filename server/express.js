@@ -9,7 +9,7 @@ import Template from './../template';
 import userRoutes from './routes/user.routes';
 import plantRoutes from './routes/plant.routes';
 import questionRoutes from './routes/question.routes';
-import responseRoutes from './routes/response.route';
+import responseRoutes from './routes/response.routes';
 
 /* modules for server side rendering */
 import React from 'react';
@@ -28,7 +28,6 @@ import devBundle from './devBundle';
 /* ensures Express server properly handles requests to static files
 such as CSS files, images or bundled client-side JS */
 const CURRENT_WORKING_DIR = process.cwd();
-
 
 const app = express();
 

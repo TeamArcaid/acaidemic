@@ -1,4 +1,4 @@
-import db from '../../models';
+import db from '../models';
 import { NotFoundApiError } from '../models/errors/notfounderror';
 import { GlobalLogger } from './logging';
 
@@ -14,22 +14,27 @@ const addResponse = ({ question, user, response_content }) =>
     response_content: response_content,
   });
 
-const _addResponse = async ({ question, user, response_type, response_content }) => {
-  if (!question || !user) {
-    throw new NotFoundApiError('Resource could not be found.');
-  }
-
-  const new_response = {
-    type: response_type,
-    content: response_content,
-  };
+const _addResponse = async ({ question_id, user_id, response_type, response_content }) => {
+  const transaction = await db.sequelize.transaction();
 
   try {
-    db.response.create(new_response, {
-      include: [question],
-    });
+    const response = await db.response.create(
+      {
+        type: response_type,
+        content: response_content,
+        questionId: question_id,
+        userId: user_id,
+      },
+      {}
+    );
+
+    await transaction.commit();
   } catch (err) {
-    GlobalLogger.error('Error adding response', { error: err, additionInfo: [arguments] });
+    await transaction.rollback();
+    GlobalLogger.error('Rolling back new response', {
+      error: err,
+      additionInfo: { question_id, user_id, response_type, response_content },
+    });
   }
 };
 

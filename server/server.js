@@ -1,10 +1,10 @@
-import config from './../config/config'
-import app from './express'
+import config from './../config/config';
+import app from './express';
+import { GlobalLogger } from './services/logging';
 
-
-app.listen(config.port, (err)=>{
-    if(err){
-        console.log(err)
-    }
-    console.info('Server started on port %s. ', config.port)
-})
+app.listen(config.port, (err) => {
+  if (err) {
+    GlobalLogger.log(err);
+  }
+  GlobalLogger.info(`Server started on port ${config.port}. `);
+});

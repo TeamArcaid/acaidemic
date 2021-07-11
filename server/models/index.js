@@ -27,20 +27,9 @@ const initializeDatabase = () => {
 
   db.plant.belongsTo(db.user);
 
-  db.question.hasMany(db.response, { as: 'responses' });
+  db.response.belongsTo(db.question);
 
-  //Association Table : Question to Response
-  db.response.belongsTo(db.question, {
-    as: 'question',
-  });
-
-  //Association Table : User to Response
-  db.user.belongsToMany(db.response, {
-    through: 'user_response',
-  });
-  db.response.belongsToMany(db.user, {
-    through: 'user_response',
-  });
+  db.user.hasMany(db.response, {});
 
   return db;
 };
@@ -49,9 +38,7 @@ let db;
 
 (async ({ env, ...options }) => {
   try {
-    console.log('Environment', env);
     const force = env === 'development';
-
     db = initializeDatabase();
     await db.sequelize.sync({ force: force });
     GlobalLogger.log('Initialized Database.');
