@@ -8,6 +8,7 @@ const logError = (msg, { error, ...additionInfo }) => {
 
 const initializeLogger = (options = {}) => ({
   log: logBase,
+  info: logBase,
   error: logError,
 });
 
