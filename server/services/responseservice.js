@@ -5,10 +5,10 @@ export const ResponseTypes = {
   STRING: 'Text',
 };
 
-const addResponse = ({ question, user, response_content }) =>
-  _addResponse({
-    question: question,
-    user: user,
+const addResponse = async ({ question_id, user_id, response_content }) =>
+  await _addResponse({
+    question_id: question_id,
+    user_id: user_id,
     response_type: ResponseTypes.STRING,
     response_content: response_content,
   });
