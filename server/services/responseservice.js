@@ -34,9 +34,30 @@ const _addResponse = async ({ question_id, user_id, response_type, response_cont
       error: err,
       additionInfo: { question_id, user_id, response_type, response_content },
     });
+    throw err;
+  }
+};
+
+const getResponses = async ({ user_id }) => {
+  try {
+    const responses = await db.response.findAll({
+      where: {
+        userId: user_id,
+      },
+    });
+
+    return responses;
+  } catch (err) {
+    GlobalLogger.error('Rolling back new response', {
+      error: err,
+      additionInfo: { user_id },
+    });
+
+    throw err;
   }
 };
 
 export default {
   addResponse,
+  getResponses,
 };

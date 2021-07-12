@@ -38,7 +38,7 @@ let db;
 
 (async ({ env, ...options }) => {
   try {
-    const force = env === 'development';
+    const force = true || env === 'development';
     db = initializeDatabase();
     await db.sequelize.sync({ force: force });
     GlobalLogger.log('Initialized Database.');
