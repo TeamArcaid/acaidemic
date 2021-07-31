@@ -1,11 +1,10 @@
-const createResponse = (sequalize, Sequelize) => {
-    const Response = sequalize.define("response", {
-        response: {
-        type: Sequelize.STRING
-        }
-    });
+const createResponse = (sequelize, SequelizeDataTypes) => {
+  const Response = sequelize.define('response', {
+    type: SequelizeDataTypes.STRING,
+    content: SequelizeDataTypes.STRING,
+  });
 
-    return Response;
-}
+  return Response;
+};
 
-export default createResponse
+export default createResponse;

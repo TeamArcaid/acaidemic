@@ -1,19 +1,19 @@
-import db from './index'
+import db from './index';
 
 const createUser = (sequalize, Sequelize) => {
-    const User = sequalize.define("user", {
-        firstName: {
-        type: Sequelize.STRING
-        },
-        lastName: {
-        type: Sequelize.STRING
-        },
-        email: {
-            type: Sequelize.STRING
-        }
-    });
+  const User = sequalize.define('user', {
+    firstName: {
+      type: Sequelize.STRING,
+    },
+    lastName: {
+      type: Sequelize.STRING,
+    },
+    email: {
+      type: Sequelize.STRING,
+    },
+  });
 
-    return User
-}
+  return User;
+};
 
-export default createUser
+export default createUser;

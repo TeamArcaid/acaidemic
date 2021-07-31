@@ -1,59 +1,52 @@
-import dbConfig from '../db.config'
+import dbConfig from '../db.config';
+import Sequelize from 'sequelize';
+import user from './user';
+import plant from './plant';
+import question from './question';
+import response from './response';
+import { GlobalLogger } from '../services/logging';
 
-import Sequelize from 'sequelize'
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const initializeDatabase = () => {
+  const sequelize = new Sequelize.Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
-    dialect: dbConfig.dialect
-})
+    port: dbConfig.PORT,
+    dialect: dbConfig.dialect,
+  });
 
-const db = {};
+  const db = {};
 
-db.Sequelize = Sequelize
-db.sequelize = sequelize
+  db.Sequelize = Sequelize;
+  db.sequelize = sequelize;
 
-import user from './user'
-import plant from './plant'
-import question from './question'
-import response from './response'
+  db.user = user(sequelize, Sequelize);
+  db.plant = plant(sequelize, Sequelize);
+  db.question = question(sequelize, Sequelize);
+  db.response = response(sequelize, Sequelize);
 
-db.user = user(sequelize, Sequelize)
-db.plant = plant(sequelize, Sequelize)
-db.question = question(sequelize, Sequelize)
-db.response = response(sequelize, Sequelize)
+  db.user.hasMany(db.plant);
 
-db.plant.belongsTo(db.user)
+  db.plant.belongsTo(db.user);
 
-db.user.hasMany(db.plant)
+  db.response.belongsTo(db.question);
 
-db.plant.belongsToMany(db.question, {
-    through: "plant_question",
-    as: "questions",
-    foreignKey: "plant_id",
-})
+  db.user.hasMany(db.response, {});
 
-db.question.belongsToMany(db.plant, {
-    through: "plant_question",
-    as:"questions",
-    foreignKey: "question_id",
-})
+  return db;
+};
 
-db.response.belongsTo(db.question, {
-    as: "question"
-})
+let db;
 
-db.question.hasMany(db.response, { as: "responses" })
+(async ({ env, ...options }) => {
+  try {
+    const force = true || env === 'development';
+    db = initializeDatabase();
+    await db.sequelize.sync({ force: force });
+    GlobalLogger.log('Initialized Database.');
+  } catch (err) {
+    GlobalLogger.error(`Initializing Database.`, { error: err });
+  }
+})({
+  env: process.env.NODE_ENV ?? 'production',
+});
 
-db.response.belongsTo(db.plant, {
-    as: "plant"  
-})
-
-db.plant.hasMany(db.response, { as: "responses" })
-
-db.response.belongsTo(db.user, {
-    as: "user"
-})
-
-db.user.hasMany(db.response, { as: "responses" })
-
-
-export default db
+export default db;
